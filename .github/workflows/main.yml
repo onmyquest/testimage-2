@@ -19,15 +19,6 @@ jobs:
         image-tag: my_image_2:latest
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
-    - name: Approval
-      id: approval
-      uses: trstringer/manual-approval@v1.9.0
-      with:
-        secret: ${{ github.TOKEN }}
-        approvers: onmyquest
-        minimum-approvals: 1
-        issue-title: Approve Image Push
-        issue-body: Please review and approve the image push to the registry
     - name: Push image
       run: docker image inspect my_image:latest
       #- name: Approval
