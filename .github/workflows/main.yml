@@ -20,9 +20,9 @@ jobs:
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
       env:
-        HTTP_PROXY: http://your-proxy-server:port
-        HTTPS_PROXY: http://your-proxy-server:port
-        NO_PROXY: localhost,127.0.0.1
+        http_proxy: http://proxy-server:2222
+        https_proxy: http://proxy-server:2222
+        no_proxy: localhost,127.0.0.1
     - name: Push image
       run: docker image inspect my_image:latest
       #- name: Approval
