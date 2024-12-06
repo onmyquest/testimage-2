@@ -24,7 +24,7 @@ jobs:
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
     - name: Push image
-      run: docker image inspect my_image:latest
+      run: docker image inspect my_image_2:latest
       #- name: Approval
       #  id: approval
       #  uses: repo/approvals-action@v2
