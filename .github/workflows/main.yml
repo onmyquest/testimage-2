@@ -7,6 +7,10 @@ jobs:
   build_and_push:
     permissions: write-all
     runs-on: ubuntu-latest
+    env:
+      HTTP_PROXY: http://proxy-server:2222
+      HTTPS_PROXY: http://proxy-server:2222
+      NO_PROXY: download.sysdig.com
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -19,10 +23,6 @@ jobs:
         image-tag: my_image_2:latest
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
-      env:
-        HTTP_PROXY: http://proxy-server:2222
-        HTTPS_PROXY: http://proxy-server:2222
-        NO_PROXY: download.sysdig.com
     - name: Push image
       run: docker image inspect my_image:latest
       #- name: Approval
