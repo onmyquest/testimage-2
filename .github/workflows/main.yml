@@ -22,7 +22,7 @@ jobs:
       env:
         http_proxy: http://proxy-server:2222
         https_proxy: http://proxy-server:2222
-        no_proxy: localhost,127.0.0.1
+        no_proxy: localhost,127.0.0.1,download.sysdig.com
     - name: Push image
       run: docker image inspect my_image:latest
       #- name: Approval
