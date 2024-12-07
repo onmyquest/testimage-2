@@ -15,6 +15,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        ref: master
+        fetch-depth: 0
     - name: Build image
       run: docker build -t my_image_2:latest .
     - name: Scan image
