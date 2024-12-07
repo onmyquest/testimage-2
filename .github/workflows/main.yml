@@ -11,7 +11,7 @@ jobs:
       HTTP_PROXY: http://proxy-server:2222
       HTTPS_PROXY: http://proxy-server:2222
       NO_PROXY: github.com,api.github.com
-      XDG_RUNTIME_DIR: /var/test
+      #XDG_RUNTIME_DIR: /var/test
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
