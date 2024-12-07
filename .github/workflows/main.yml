@@ -19,7 +19,7 @@ jobs:
       run: docker build -t my_image_2:latest .
     - name: Scan image
       id: scan
-      uses: onmyquest/scan-action@test
+      uses: onmyquest/scan-action@master
       with:
         image-tag: my_image_2:latest
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
