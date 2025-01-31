@@ -16,7 +16,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Build image
-      run: docker build -t my_image_2:latest .
+      run: docker build -t my_image_2:latest --file Dockerfile.1 .
     - name: Scan image
       id: scan
       uses: onmyquest/scan-action@4af6170365572ff63460056f9ce27abd75886e51
