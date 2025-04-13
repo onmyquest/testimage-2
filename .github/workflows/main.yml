@@ -16,7 +16,7 @@ jobs:
       id: scan
       uses: sysdiglabs/scan-action@v5
       with:
-        image-tag: onmyquest/my_image_2:latest
+        image-tag: my_image_2:latest
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
     - name: Upload SARIF file
