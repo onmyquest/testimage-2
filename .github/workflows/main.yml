@@ -14,17 +14,17 @@ jobs:
       run: docker build -t my_image_2:latest --file Dockerfile.1 .
     - name: Scan image
       id: scan
-      uses: sysdiglabs/scan-action@v4
+      uses: sysdiglabs/scan-action@v5
       with:
         image-tag: my_image_2:latest
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
         use-policies: sbp-copy
-    #- name: Upload SARIF file
-    #  if: success() || failure()
-    #  uses: github/codeql-action/upload-sarif@v3
-    #  with:
-    #    sarif_file: ${{ github.workspace }}/sarif.json
+    - name: Upload SARIF file
+      if: success() || failure()
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: ${{ github.workspace }}/sarif.json
     #- name: Push image
     #  run: docker image inspect my_image_2:latest
       #- name: Approval
