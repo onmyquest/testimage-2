@@ -28,8 +28,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: output-files
-        path: ${{ github.workspace }}/scan-result.json
-        path: ${{ github.workspace }}/sarif.json
+        path: | 
+          ${{ github.workspace }}/scan-result.json
+          ${{ github.workspace }}/sarif.json
 
     #- name: Push image
     #  run: docker image inspect my_image_2:latest
