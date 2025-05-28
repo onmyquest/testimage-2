@@ -20,6 +20,7 @@ jobs:
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
         severity-at-least: medium
+        cli-scanner-version: 1.18.0
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
@@ -34,7 +35,7 @@ jobs:
     #    sarif_file: ${{ github.workspace }}/sarif.json
 
 
-    ##- name: Push image
+    #- name: Push image
     #  run: docker image inspect my_image_2:latest
       #- name: Approval
       #  id: approval
