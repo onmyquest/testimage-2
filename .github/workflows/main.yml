@@ -33,7 +33,7 @@ jobs:
       run: |
           IMAGE_TAG="my_image_2:latest"
           SYSDIG_TOKEN="1293902d-2376-4ec4-af64-c4605434fb0e"
-          RESPONSE=$(curl --request GET --url "https://api.us1.sysdig.com/secure/vulnerability/v1/pipeline-results?limit=1&filter=freeText+in+(\"${IMAGE_TAG}\")" --header "Authorization: Bearer ${SYSDIG_TOKEN}")
+          RESPONSE=$(curl -s --request GET --url "https://api.us1.sysdig.com/secure/vulnerability/v1/pipeline-results?limit=1&filter=freeText+in+(\"${IMAGE_TAG}\")" --header "Authorization: Bearer ${SYSDIG_TOKEN}")
           
           echo "---- Raw API Response ----"
           echo "$RESPONSE" | jq --raw-output
