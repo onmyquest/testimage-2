@@ -22,6 +22,8 @@ jobs:
     #    password: Quest!2345
     #    registry: docker.io
     #    logout: true
+    - name: Pull Docker Image
+      run: docker pull onmyquest/testprom:latest
     
     - name: Scan image
       id: scan
