@@ -19,7 +19,7 @@ jobs:
       uses: docker/login-action@v2
       with:
         username: onmyquest
-        password: Quest!2345
+        password: Quest!234
         registry: docker.io
         logout: true
     
