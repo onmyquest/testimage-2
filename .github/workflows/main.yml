@@ -15,13 +15,13 @@ jobs:
     #- name: Build image
     #  run: docker build -t my_image_2:latest --file Dockerfile.2 .
     
-    - name: Login docker
-      uses: docker/login-action@v2
-      with:
-        username: onmyquest
-        password: Quest!2345
-        registry: docker.io
-        logout: true
+    #- name: Login docker
+    #  uses: docker/login-action@v2
+    #  with:
+    #    username: onmyquest
+    #    password: Quest!2345
+    #    registry: docker.io
+    #    logout: true
     
     - name: Scan image
       id: scan
