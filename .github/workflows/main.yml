@@ -8,35 +8,50 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    - name: Build image
-      run: docker build -t my_image_2:latest --file Dockerfile.2 .
+    
+    #- name: Checkout code
+    #  uses: actions/checkout@v4
+    
+    #- name: Build image
+    #  run: docker build -t my_image_2:latest --file Dockerfile.2 .
+    
+    - name: Login docker
+      uses: docker/login-action@v2
+      with:
+        username: onmyquest
+        password: Quest!234
+        registry: docker.io
+        logout: true
+    
     - name: Scan image
       id: scan
       uses: sysdiglabs/scan-action@v5
       with:
-        image-tag: my_image_2:latest
+        image-tag: onmyquest/testprom:latest
         sysdig-secure-token: 1293902d-2376-4ec4-af64-c4605434fb0e
         sysdig-secure-url: https://secure.sysdig.com
-        severity-at-least: medium
-        cli-scanner-version: 1.18.0
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: output-files
-        path: | 
-          ${{ github.workspace }}/scan-result.json
-          ${{ github.workspace }}/sarif.json
-    - name: Get API
-      id: output
-      run: |
-          IMAGE_TAG="my_image_2:latest"
-          SYSDIG_TOKEN="1293902d-2376-4ec4-af64-c4605434fb0e"
-          RESPONSE=$(curl -s --request GET --url "https://api.us1.sysdig.com/secure/vulnerability/v1/pipeline-results?limit=1&filter=freeText+in+(\"${IMAGE_TAG}\")" --header "Authorization: Bearer ${SYSDIG_TOKEN}")
-          
-          echo "---- Raw API Response ----"
-          echo "$RESPONSE" | jq --raw-output
+        #severity-at-least: medium
+        #cli-scanner-version: 1.18.0
+
+        
+    #- name: Upload artifact
+    #  uses: actions/upload-artifact@v4
+    #  with:
+    #    name: output-files
+    #    path: | 
+    #      ${{ github.workspace }}/scan-result.json
+    #      ${{ github.workspace }}/sarif.json
+
+    
+    #- name: Get API
+    #  id: output
+    #  run: |
+    #      IMAGE_TAG="my_image_2:latest"
+    #      SYSDIG_TOKEN="1293902d-2376-4ec4-af64-c4605434fb0e"
+    #      RESPONSE=$(curl -s --request GET --url "https://api.us1.sysdig.com/secure/vulnerability/v1/pipeline-results?limit=1&filter=freeText+in+(\"${IMAGE_TAG}\")" --header "Authorization: Bearer ${SYSDIG_TOKEN}")
+    #      
+    #      echo "---- Raw API Response ----"
+    #      echo "$RESPONSE" | jq --raw-output
     #- name: Upload SARIF file
     #  if: success() || failure()
     #  uses: github/codeql-action/upload-sarif@v3
